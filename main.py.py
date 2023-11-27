@@ -4,8 +4,8 @@ import pandas as pd
 import random
 
 # MySQL DB credentials
-user = "Insert here your username"
-password = "Insert here your password"
+user = "gpizzutoa"
+password = "Guero.2001"
 
 def createdb(user:str, passw:str):
     db = mysql.connect(host="localhost", user=user, passwd=passw)
@@ -16,27 +16,29 @@ def createdb(user:str, passw:str):
     curs.execute(databasecreation)
 
 def creattables(user:str,passw:str):
-    db = mysql.connect(host="localhost", user=user, passwd=passw, database="chess")
+    db = mysql.connect(host="localhost", user=user, passwd=passw, database="Boston Crimes")
     curs = db.cursor()
 
-    name_table_1 = "CREATE TABLE Players(" \
-                   "Player_ID INT PRIMARY KEY," \
-                   "Player_Name VARCHAR(255) NOT NULL," \
-                   "Best_Rating SMALLINT NOT NULL," \
-                   "Worst_Rating SMALLINT NOT NULL," \
-                   "Year_of_Birth INT NOT NULL" \
+    name_table_1 = "CREATE TABLE Incidents(" \
+                   "Incident_ID INT PRIMARY KEY," \
+                   "Offence_Code SMALLINT NOT NULL," \
+                   "Date_Time DATETIME NOT NULL," \
+                   "Shootings TINYINT NULL," \
                    ");"
 
-    name_table_2 = "CREATE TABLE Victory_Types(" \
-                       "Vt_ID SMALLINT PRIMARY KEY," \
-                       "Vt VARCHAR(255) NOT NULL," \
-                       "Winner VARCHAR(255) NOT NULL" \
+    name_table_2 = "CREATE TABLE Crime_Types(" \
+                       "Crime_Code PRIMARY KEY," \
+                       "Code_Group VARCHAR(100) NOT NULL," \
+                       "Description VARCHAR(255) NOT NULL," \
+                       "UCR ENUM('Part One', 'Part Two', 'Part Three') NOT NULL," \
+                       "Description VARCHAR(255) NOT NULL," \
                        ");"
 
-    name_table_n = "CREATE TABLE Openings(" \
-                   "Op_ID INT PRIMARY KEY," \
-                   "Op_name VARCHAR(255) NOT NULL," \
-                   "Op_eco VARCHAR(10) NOT NULL" \
+    name_table_n = "CREATE TABLE Place(" \
+                   "Street VARCHAR(255) NOT NULL," \
+                   "District VARCHAR(100) NOT NULL," \
+                   "Area SMALLINT NOT NULL," \
+                   "Location POINT NOT NULL," \
                    ");"
 
     curs.execute(name_table_1)
