@@ -82,9 +82,9 @@ import csv
 # Connect to the MySQL Database
 db = mysql.connect(
     host="localhost",
-    user="username",  # Replace with your username
-    passwd="password",  # Replace with your password
-    database="bostoncrimes"  # Database name
+    user="username",  
+    passwd="password", 
+    database="bostoncrimes"  
 )
 cursor = db.cursor()
 
