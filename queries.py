@@ -158,9 +158,9 @@ def main():
     # Database Configuration - Update with your actual database credentials
     db_config = {
         'host': 'localhost',
-        'user': 'gpizzutoa',
-        'passwd': 'Guero.2001',
-        'database': 'Boston_Crimes1'
+        'user': 'username',
+        'passwd': 'Password',
+        'database': 'BostonCrimes'
     }
 
     while True:
