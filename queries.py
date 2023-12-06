@@ -162,9 +162,9 @@ def main():
     # Database Configuration - Update with your actual database credentials
     db_config = {
         'host': 'localhost',
-        'user': 'username',
-        'passwd': 'password',
-        'database': 'Boston Crimes'
+        'user': 'gay',
+        'passwd': 'santiagocuesta1234',
+        'database': 'BostonCrimes'
     }
 
     while True:
