@@ -164,7 +164,7 @@ def main():
         'host': 'localhost',
         'user': 'username',
         'passwd': 'password',
-        'database': 'Boston Crimes'
+        'database': 'BostonCrimes'
     }
 
     while True:
