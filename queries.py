@@ -1,5 +1,9 @@
 import mysql.connector
 import random
+from pyfiglet import Figlet
+
+figlet = Figlet(font="standard")
+ascii_art = figlet.renderText("BOSTON CRIMES")
 
 def execute_query(db_config, query_number):
     try:
@@ -159,11 +163,12 @@ def main():
     db_config = {
         'host': 'localhost',
         'user': 'username',
-        'passwd': 'Password',
-        'database': 'BostonCrimes'
+        'passwd': 'password',
+        'database': 'Boston Crimes'
     }
 
     while True:
+        print(ascii_art)
         print("\nSelect a query to execute:")
         print("1. Which areas should I avoid at different times when visiting Boston? ")
         print("2. Is Boston becoming safer as the years pass?")
