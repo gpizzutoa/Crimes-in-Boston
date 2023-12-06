@@ -162,8 +162,8 @@ def main():
     # Database Configuration - Update with your actual database credentials
     db_config = {
         'host': 'localhost',
-        'user': 'gay',
-        'passwd': 'santiagocuesta1234',
+        'user': 'username',
+        'passwd': 'password',
         'database': 'BostonCrimes'
     }
 
@@ -189,4 +189,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
