@@ -88,16 +88,7 @@ def query_incidents_by_year():
     for item in result:
         print(f"Year: {item['_id']}, Total Incidents: {item['total_incidents']}")
 
-# Query 2: Average Number of Incidents by Day of Week
-def query_avg_incidents_by_day():
-    result = incidents_col.aggregate([
-        {"$group": {"_id": "$DateTime.DayOfWeek", "average_incidents": {"$avg": 1}}},
-        {"$sort": {"average_incidents": -1}}
-    ])
-    for item in result:
-        print(f"Day of Week: {item['_id']}, Average Incidents: {item['average_incidents']}")
-
-# Query 3: Top 5 Most Common Crime Types
+# Query 2: Top 5 Most Common Crime Types
 def query_top_crime_types():
     result = incidents_col.aggregate([
         {"$group": {"_id": "$OffenceCode", "count": {"$sum": 1}}},
@@ -107,22 +98,40 @@ def query_top_crime_types():
     for item in result:
         print(f"Offence Code: {item['_id']}, Count: {item['count']}")
 
-# Query 4: Incidents Involving Shootings by District
-def query_shootings_by_district():
+# Query 3: Total number of crimes per hour 
+def query_crimes_by_hour():
     result = incidents_col.aggregate([
-        {"$match": {"Shootings": True}},
-        {"$group": {"_id": "$Place.District", "shootings_count": {"$sum": 1}}},
-        {"$sort": {"shootings_count": -1}}
+        {"$group": {"_id": "$DateTime.Hour", "count": {"$sum": 1}}},
+        {"$sort": {"_id": 1}}
     ])
     for item in result:
-        print(f"District: {item['_id']}, Shootings Count: {item['shootings_count']}")
+        print(f"Hour: {item['_id']}, Number of Crimes: {item['count']}")
+
+# Query 4: Crimes with/without shooting per year
+def query_shooting_vs_nonshooting_by_year():
+    result = incidents_col.aggregate([
+        {"$group": {
+            "_id": {
+                "Year": "$DateTime.Year",
+                "ShootingInvolved": "$Shootings"
+            },
+            "count": {"$sum": 1}
+        }},
+        {"$sort": {"_id.Year": 1, "_id.ShootingInvolved": -1}}
+    ])
+    for item in result:
+        shooting_status = "With Shooting" if item["_id"]["ShootingInvolved"] else "Without Shooting"
+        print(f"Year: {item['_id']['Year']}, {shooting_status}: {item['count']}")
+
+
+
+
+
 
 # Execute queries
 print("\nExecuting queries...")
 query_incidents_by_year()
-query_avg_incidents_by_day()
 query_top_crime_types()
-query_shootings_by_district()
-
-
+query_crimes_by_hour()
+query_shooting_vs_nonshooting_by_year()
 
