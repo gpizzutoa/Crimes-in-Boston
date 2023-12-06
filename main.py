@@ -2,8 +2,8 @@ import mysql.connector as mysql
 from mysql.connector import Error
 
 # MySQL DB credentials
-user = "usernmae"
-password = "password"
+user = "gpizzutoa"
+password = "Guero.2001"
 
 def create_database(cursor):
     try:
@@ -82,8 +82,8 @@ import csv
 # Connect to the MySQL Database
 db = mysql.connect(
     host="localhost",
-    user="username",  
-    passwd="password", 
+    user= user,  
+    passwd= password, 
     database="bostoncrimes"  
 )
 cursor = db.cursor()
