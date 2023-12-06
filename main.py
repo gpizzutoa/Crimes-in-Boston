@@ -2,8 +2,8 @@ import mysql.connector as mysql
 from mysql.connector import Error
 
 # MySQL DB credentials
-user = "gpizzutoa"
-password = "Guero.2001"
+user = "username"
+password = "password"
 
 def create_database(cursor):
     try:
@@ -114,7 +114,7 @@ def insert_data(row):
 
 
 # Read CSV and insert data
-with open('C:/Users/Gianfranco Pizzuto/OneDrive/Escritorio/DATABASES-PROJECT/Crimes-in-Boston/crime.csv', 'r', encoding='cp1252') as file:
+with open('crime.csv', 'r', encoding='cp1252') as file:
     csv_reader = csv.DictReader(file)
 
     for row in csv_reader:
