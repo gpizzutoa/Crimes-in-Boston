@@ -11,7 +11,7 @@ incidents_col = db['incidents']
 
 # Import data from CSV with batch processing
 def import_data():
-    file_path = 'C:/Users/User/OneDrive/Desktop/DATA_PROJECT/Crimes-in-Boston/crime.csv'
+    file_path = 'C:/Users/Gianfranco Pizzuto/OneDrive/Escritorio/DATABASES-PROJECT/Crimes-in-Boston/crime.csv'
     batch_size = 1000  # Number of documents to insert at a time
     incidents_batch = []
     processed_rows = 0
